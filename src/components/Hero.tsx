@@ -6,14 +6,6 @@ import Navbar from "./Navbar";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-background">
-      {/* Diagonal accent wedge */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-brand-orange/90"
-        style={{ clipPath: "polygon(38% 0, 100% 0, 100% 78%, 62% 100%)" }}
-      />
-      {/* Soft blob behind products */}
-      <div className="pointer-events-none absolute right-[6%] top-[18%] -z-10 h-[280px] w-[280px] rounded-full bg-brand-charcoal/10 blur-2xl sm:h-[380px] sm:w-[380px]" />
-
       <Navbar />
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 py-16 sm:px-10 sm:py-20 lg:grid-cols-2 lg:gap-8 lg:py-28">
@@ -76,7 +68,14 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="relative flex h-[300px] items-center justify-center sm:h-[400px] lg:h-[460px] lg:justify-end">
+        <div className="relative flex h-[300px] items-center justify-center overflow-hidden rounded-3xl sm:h-[400px] lg:h-[460px] lg:justify-end">
+          {/* Diagonal accent wedge — confined to the image column so it never crosses into the text on mobile */}
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 bg-brand-orange/90"
+            style={{ clipPath: "polygon(30% 0, 100% 0, 100% 100%, 0 100%)" }}
+          />
+          <div className="pointer-events-none absolute right-[10%] top-[20%] -z-10 h-[220px] w-[220px] rounded-full bg-brand-charcoal/10 blur-2xl sm:h-[320px] sm:w-[320px]" />
+
           <motion.img
             src="/images/uncoated-calcium-carbonate.png"
             alt="Bharat Carbonates Uncoated Calcium Carbonate packaging"

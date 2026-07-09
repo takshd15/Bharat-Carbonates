@@ -14,7 +14,7 @@ const stats = [
 export default function StatsStrip() {
   return (
     <section className="border-b border-brand-border bg-background px-6 py-12 sm:px-10">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-brand-border sm:grid-cols-4 sm:divide-y-0 sm:divide-x">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-4 sm:divide-x sm:divide-brand-border">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -22,7 +22,9 @@ export default function StatsStrip() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 * i, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-1.5 px-0 py-4 sm:px-8 sm:py-0"
+            className={`flex flex-col gap-1.5 px-0 py-4 sm:px-8 sm:py-0 sm:border-t-0 ${
+              i >= 2 ? "border-t border-brand-border" : ""
+            }`}
           >
             <div className="flex items-center gap-2 text-2xl font-medium text-brand-charcoal sm:text-3xl">
               {stat.type === "counter" ? (

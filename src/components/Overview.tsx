@@ -109,21 +109,17 @@ export default function Overview() {
       </div>
 
       <motion.div
-        initial={{ clipPath: "inset(0 0 100% 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+        initial={{ opacity: 0, scale: 0.94 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative mx-auto mt-16 max-w-3xl overflow-hidden rounded-t-[999px] rounded-b-2xl"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <motion.img
+        <img
           src="/images/factory-13.jpg"
           alt="Bharat Carbonates manufacturing facility"
-          initial={{ scale: 1.15 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="h-[320px] w-full object-cover sm:h-[400px]"
+          className="h-[280px] w-full object-cover sm:h-[400px]"
         />
         <div className="absolute inset-0 bg-brand-charcoal/20" />
         <button

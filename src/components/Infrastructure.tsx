@@ -99,7 +99,7 @@ export default function Infrastructure() {
           Built for scale and consistency
         </motion.h2>
 
-        <div className="grid grid-cols-2 gap-4 sm:auto-rows-[180px] sm:grid-cols-4">
+        <div className="grid grid-cols-2 auto-rows-[150px] gap-4 sm:auto-rows-[180px] sm:grid-cols-4">
           <FactorySlideshow />
           {images.map((item, i) => (
             <motion.div
@@ -110,7 +110,6 @@ export default function Infrastructure() {
               transition={{ duration: 0.6, delay: 0.08 * i }}
               className={`group relative cursor-pointer overflow-hidden rounded-2xl ${item.span}`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <motion.img
                 src={item.image}
                 alt={item.label}

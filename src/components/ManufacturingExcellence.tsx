@@ -53,20 +53,14 @@ export default function ManufacturingExcellence() {
             whileHover={{ y: -4, transition: { duration: 0.25 } }}
             className="group"
           >
-            <motion.div
-              initial={{ clipPath: "inset(0 100% 0 0)" }}
-              whileInView={{ clipPath: "inset(0 0% 0 0)" }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden rounded-2xl"
-            >
+            <div className="overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.image}
                 alt={item.label}
                 className="h-56 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-            </motion.div>
+            </div>
             <h3 className="mt-5 text-[15px] font-semibold text-brand-charcoal">
               {item.label}
             </h3>

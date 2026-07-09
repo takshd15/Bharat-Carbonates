@@ -94,7 +94,7 @@ function ProductCard({
 export default function Products() {
   return (
     <section id="products" className="mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-28">
-      <div className="mb-16 flex items-end justify-between">
+      <div className="mb-16 flex flex-wrap items-end justify-between gap-4">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,7 +114,7 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="hidden shrink-0 text-[11px] font-medium uppercase tracking-[0.14em] text-brand-charcoal underline decoration-brand-border underline-offset-4 transition-colors hover:text-brand-orange hover:decoration-brand-orange sm:block"
+          className="shrink-0 text-[11px] font-medium uppercase tracking-[0.14em] text-brand-charcoal underline decoration-brand-border underline-offset-4 transition-colors hover:text-brand-orange hover:decoration-brand-orange"
         >
           See All Products
         </motion.a>

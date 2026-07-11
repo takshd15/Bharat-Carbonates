@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Settings2, Truck } from "lucide-react";
+import { CalendarCheck2, ShieldCheck, Award } from "lucide-react";
 import Counter from "./Counter";
 
 const stats = [
-  { type: "counter" as const, value: 150000, suffix: " MT", label: "Capacity" },
-  { type: "counter" as const, value: 25, suffix: "+", label: "Years" },
-  { type: "icon" as const, icon: Settings2, value: "Custom", label: "Manufacturing" },
-  { type: "icon" as const, icon: Truck, value: "Pan-India", label: "Supply" },
+  { type: "icon" as const, icon: CalendarCheck2, value: "2009", label: "Established" },
+  { type: "counter" as const, value: 20, suffix: "+", label: "Years Experience" },
+  { type: "icon" as const, icon: ShieldCheck, value: "ISO 9001:2015", label: "Certified" },
+  { type: "icon" as const, icon: Award, value: "2-Star", label: "Export House" },
 ];
 
 export default function StatsStrip() {

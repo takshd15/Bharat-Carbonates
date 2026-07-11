@@ -1,133 +1,151 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
-const factorySlides = ["/images/factory-13.jpg", "/images/factory-9.jpg", "/images/factory-16.jpg"];
-
-const images = [
-  {
-    label: "Warehouse",
-    image: "/images/infra-3.jpg",
-    span: "",
-  },
-  {
-    label: "Laboratory",
-    image: "/images/factory-11.jpg",
-    span: "",
-  },
-  {
-    label: "Loading Area",
-    image: "/images/factory-4.jpg",
-    span: "",
-  },
-  {
-    label: "Machines",
-    image: "/images/factory-6.jpg",
-    span: "",
-  },
+const departments = [
+  "Export Sales & Business Development",
+  "Procurement & Vendor Management",
+  "Export Documentation & Logistics",
+  "Finance & Accounts",
+  "Administration & HR",
 ];
 
-function FactorySlideshow() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % factorySlides.length);
-    }, 3200);
-    return () => clearInterval(timer);
-  }, []);
-
+function Node({
+  eyebrow,
+  title,
+  subtitle,
+  delay,
+  tone = "light",
+}: {
+  eyebrow: string;
+  title: React.ReactNode;
+  subtitle?: string;
+  delay: number;
+  tone?: "light" | "dark";
+}) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl sm:col-span-2 sm:row-span-2"
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.5, delay }}
+      className={`w-full max-w-md rounded-2xl border px-6 py-5 text-center ${
+        tone === "dark"
+          ? "border-brand-charcoal bg-brand-charcoal text-white"
+          : "border-brand-border bg-background text-brand-charcoal"
+      }`}
     >
-      <AnimatePresence mode="sync">
-        <motion.img
-          key={factorySlides[index]}
-          src={factorySlides[index]}
-          alt="Factory"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/75 via-transparent to-transparent transition-colors duration-500 group-hover:from-brand-charcoal/85" />
-      <div className="absolute bottom-4 left-4 text-[13px] font-semibold text-white">
-        Factory
+      <div
+        className={`text-[10px] font-semibold uppercase tracking-[0.14em] ${
+          tone === "dark" ? "text-brand-orange" : "text-brand-orange"
+        }`}
+      >
+        {eyebrow}
       </div>
-      <div className="absolute right-4 top-4 flex gap-1.5">
-        {factorySlides.map((slide, i) => (
-          <span
-            key={slide}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === index ? "w-5 bg-white" : "w-1.5 bg-white/40"
-            }`}
-          />
-        ))}
-      </div>
+      <div className="mt-1.5 text-[15px] font-semibold leading-snug">{title}</div>
+      {subtitle && (
+        <div
+          className={`mt-1 text-[12px] ${
+            tone === "dark" ? "text-white/60" : "text-brand-muted"
+          }`}
+        >
+          {subtitle}
+        </div>
+      )}
     </motion.div>
+  );
+}
+
+function Connector({ delay }: { delay: number }) {
+  return (
+    <motion.div
+      initial={{ scaleY: 0, opacity: 0 }}
+      whileInView={{ scaleY: 1, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="h-8 w-px origin-top bg-brand-border"
+    />
   );
 }
 
 export default function Infrastructure() {
   return (
-    <section id="infrastructure" className="bg-brand-grey px-6 py-24 sm:px-10 sm:py-32">
-      <div className="mx-auto max-w-7xl">
+    <section id="organisation" className="bg-brand-grey px-6 py-24 sm:px-10 sm:py-32">
+      <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange"
+          className="mb-4 text-center text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange"
         >
-          Infrastructure
+          Organisation
         </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-16 max-w-xl text-3xl font-medium text-brand-charcoal sm:text-4xl"
+          className="mb-16 text-center text-3xl font-medium text-brand-charcoal sm:text-4xl"
         >
-          Built for scale and consistency
+          Organisational Hierarchy
         </motion.h2>
 
-        <div className="grid grid-cols-2 auto-rows-[150px] gap-4 sm:auto-rows-[180px] sm:grid-cols-4">
-          <FactorySlideshow />
-          {images.map((item, i) => (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.08 * i }}
-              className={`group relative cursor-pointer overflow-hidden rounded-2xl ${item.span}`}
-            >
-              <motion.img
-                src={item.image}
-                alt={item.label}
-                initial={{ scale: 1.2 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/75 via-transparent to-transparent transition-colors duration-500 group-hover:from-brand-charcoal/85" />
-              <div className="absolute bottom-4 left-4 text-[13px] font-semibold text-white">
-                {item.label}
-              </div>
-              <span className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                +
-              </span>
-            </motion.div>
-          ))}
+        <div className="flex flex-col items-center">
+          <Node
+            eyebrow="Promoters / Directors"
+            title={
+              <>
+                Mr. Parmesh Goyal
+                <br />
+                Mr. Rajesh Goyal
+              </>
+            }
+            delay={0}
+            tone="dark"
+          />
+          <Connector delay={0.1} />
+          <Node
+            eyebrow="Leadership"
+            title="Business Head / Managing Director"
+            delay={0.15}
+          />
+          <Connector delay={0.25} />
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-muted"
+          >
+            Departments
+          </motion.div>
+
+          <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
+            {departments.map((dept, i) => (
+              <motion.div
+                key={dept}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.35 + i * 0.06 }}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                className="rounded-xl border border-brand-border bg-background px-5 py-4 text-center text-[13px] font-medium text-brand-charcoal sm:text-left"
+              >
+                {dept}
+              </motion.div>
+            ))}
+          </div>
+
+          <Connector delay={0.7} />
+          <Node
+            eyebrow="Workforce"
+            title="24 Employees"
+            subtitle="Across all departments"
+            delay={0.75}
+            tone="dark"
+          />
         </div>
       </div>
     </section>

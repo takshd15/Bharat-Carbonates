@@ -22,7 +22,7 @@ export default function Cta() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl text-3xl font-medium leading-snug text-white sm:text-4xl"
         >
-          Looking for High-Quality Calcium Carbonate?
+          Looking for a Reliable Export Partner?
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

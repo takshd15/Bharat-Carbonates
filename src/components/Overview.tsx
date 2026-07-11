@@ -1,49 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CalendarCheck2, ShieldCheck, Award, Globe2 } from "lucide-react";
 
 const points = [
   {
-    label: "Since 1999",
-    desc: "25+ years of disciplined manufacturing.",
+    label: "Established 2009",
+    desc: "Over 20 years of trading experience.",
     tone: "bg-brand-charcoal",
     offset: "sm:translate-y-6",
+    icon: CalendarCheck2,
   },
   {
-    label: "Manufacturing Excellence",
-    desc: "150,000 MTPA of engineered capacity.",
+    label: "ISO 9001:2015",
+    desc: "Certified quality management system.",
     tone: "bg-brand-orange",
     offset: "sm:-translate-y-3",
+    icon: ShieldCheck,
   },
   {
-    label: "Quality Assurance",
-    desc: "In-house lab testing, every batch.",
+    label: "2-Star Export House",
+    desc: "Government-recognised trade status.",
     tone: "bg-brand-orange",
     offset: "sm:-translate-y-3",
+    icon: Award,
   },
   {
-    label: "Long-Term Trust",
-    desc: "Relationships built on consistency.",
+    label: "Pan-African Presence",
+    desc: "Reliable partnerships across five markets.",
     tone: "bg-brand-charcoal",
     offset: "sm:translate-y-6",
+    icon: Globe2,
   },
-];
-
-const icons = [
-  <svg key="1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-    <circle cx="12" cy="12" r="8" />
-    <path d="M12 8v4l3 2" />
-  </svg>,
-  <svg key="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-    <path d="M4 20V10l8-5 8 5v10" />
-    <path d="M4 20h16" />
-  </svg>,
-  <svg key="3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-    <path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" />
-  </svg>,
-  <svg key="4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-    <path d="M4 12.5l5 5L20 7" />
-  </svg>,
 ];
 
 export default function Overview() {
@@ -56,7 +44,7 @@ export default function Overview() {
         transition={{ duration: 0.6 }}
         className="mb-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange"
       >
-        About Bharat Carbonates
+        About Parmeshwar Impex
       </motion.div>
 
       <motion.h2
@@ -66,8 +54,8 @@ export default function Overview() {
         transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="mx-auto max-w-2xl text-3xl font-bold leading-tight text-brand-charcoal sm:text-4xl"
       >
-        We are industrial{" "}
-        <span className="text-brand-orange">mineral manufacturers</span>
+        We are a global{" "}
+        <span className="text-brand-orange">export &amp; import house</span>
       </motion.h2>
 
       <motion.p
@@ -77,35 +65,38 @@ export default function Overview() {
         transition={{ duration: 0.6, delay: 0.15 }}
         className="mx-auto mt-5 max-w-xl text-[14px] leading-relaxed text-brand-muted"
       >
-        Since 1999, Bharat Carbonates has grown from a 6,000 MTPA plant into
-        one of India&apos;s leading calcium carbonate and talc manufacturers —
-        scaling to 150,000 MTPA while holding the same standard of quality our
-        first customers trusted us for.
+        Parmeshwar Impex Pvt. Ltd. is a Surat-based trading company engaged
+        in international trade across ENA, glass bottles, ROPP caps, PET
+        preform, and plastic caps — with a strong presence in African
+        markets built on reliable sourcing and long-term relationships.
       </motion.p>
 
       <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 sm:gap-x-4">
-        {points.map((point, i) => (
-          <motion.div
-            key={point.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 * i }}
-            className={point.offset}
-          >
-            <span
-              className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full text-white ${point.tone}`}
+        {points.map((point, i) => {
+          const Icon = point.icon;
+          return (
+            <motion.div
+              key={point.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 * i }}
+              className={point.offset}
             >
-              {icons[i]}
-            </span>
-            <div className="mt-4 text-[13.5px] font-semibold text-brand-charcoal">
-              {point.label}
-            </div>
-            <div className="mt-1 text-[12px] leading-relaxed text-brand-muted">
-              {point.desc}
-            </div>
-          </motion.div>
-        ))}
+              <span
+                className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full text-white ${point.tone}`}
+              >
+                <Icon className="h-6 w-6" strokeWidth={1.6} />
+              </span>
+              <div className="mt-4 text-[13.5px] font-semibold text-brand-charcoal">
+                {point.label}
+              </div>
+              <div className="mt-1 text-[12px] leading-relaxed text-brand-muted">
+                {point.desc}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
       <motion.div
@@ -113,21 +104,22 @@ export default function Overview() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative mx-auto mt-16 max-w-3xl overflow-hidden rounded-t-[999px] rounded-b-2xl"
+        className="relative mx-auto mt-16 flex h-[240px] max-w-3xl items-center justify-center overflow-hidden rounded-t-[999px] rounded-b-2xl bg-brand-charcoal sm:h-[320px]"
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/factory-13.jpg"
-          alt="Bharat Carbonates manufacturing facility"
-          className="h-[280px] w-full object-cover sm:h-[400px]"
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, var(--brand-orange) 1px, transparent 1px)",
+            backgroundSize: "18px 18px",
+          }}
         />
-        <div className="absolute inset-0 bg-brand-charcoal/20" />
-        <button
-          aria-label="Watch factory video"
-          className="group absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brand-charcoal shadow-lg transition-transform duration-300 hover:scale-110"
-        >
-          <span className="ml-1 h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-brand-charcoal transition-colors group-hover:border-l-brand-orange" />
-        </button>
+        <div className="relative flex flex-col items-center gap-3">
+          <Globe2 className="h-14 w-14 text-brand-orange" strokeWidth={1.3} />
+          <span className="text-[13px] font-semibold uppercase tracking-[0.12em] text-white/80">
+            Connecting India to Africa
+          </span>
+        </div>
       </motion.div>
     </section>
   );

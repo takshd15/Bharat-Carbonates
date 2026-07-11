@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { label: "Raw Material", icon: "◆" },
-  { label: "Grinding", icon: "◍" },
-  { label: "Coating", icon: "◈" },
-  { label: "Testing", icon: "◔" },
-  { label: "Packaging", icon: "▣" },
-  { label: "Dispatch", icon: "◇" },
+  { label: "Sourcing", icon: "◆" },
+  { label: "Quality Check", icon: "◔" },
+  { label: "Documentation", icon: "▣" },
+  { label: "Shipping", icon: "◍" },
+  { label: "Customs Clearance", icon: "◈" },
+  { label: "Delivery", icon: "◇" },
 ];
 
 const torn =
@@ -22,15 +22,14 @@ export default function Process() {
       className="relative overflow-hidden bg-brand-charcoal py-28 sm:py-36"
       style={{ clipPath: torn }}
     >
-      <div className="absolute inset-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/factory-3.jpg"
-          alt="Bharat Carbonates production facility"
-          className="h-full w-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-brand-charcoal/60" />
-      </div>
+      <div
+        className="absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, var(--brand-orange) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10">
         <motion.div
@@ -40,7 +39,7 @@ export default function Process() {
           transition={{ duration: 0.6 }}
           className="mb-4 text-center text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange"
         >
-          Manufacturing Process
+          Export Process
         </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
@@ -49,7 +48,7 @@ export default function Process() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto mb-16 max-w-xl text-center text-3xl font-bold text-white sm:text-4xl"
         >
-          From raw material to reliable dispatch
+          From sourcing to reliable delivery
         </motion.h2>
 
         {/* Desktop: circular hub-and-spoke diagram */}

@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 const links = [
   { label: "Home", href: "#" },
-  { label: "About Us", href: "#about" },
+  { label: "About", href: "#about" },
   { label: "Products", href: "#products" },
-  { label: "Applications", href: "#industries" },
-  { label: "Infrastructure", href: "#infrastructure" },
+  { label: "Markets", href: "#markets" },
+  { label: "Organisation", href: "#organisation" },
 ];
 
 export default function Navbar() {
@@ -35,21 +34,18 @@ export default function Navbar() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className={`sticky top-0 z-50 bg-background transition-shadow duration-500 ${
-        scrolled ? "shadow-[0_1px_0_0_rgba(0,0,0,0.06)]" : "border-b border-brand-border"
+      className={`sticky top-0 z-50 border-b transition-colors duration-500 ${
+        scrolled || menuOpen
+          ? "border-white/10 bg-[#081527]/85 backdrop-blur-md"
+          : "border-white/12 bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-6 py-4 sm:px-10">
         <div className="flex items-center gap-10">
           <a href="#" className="shrink-0" onClick={() => setMenuOpen(false)}>
-            <Image
-              src="/images/logo.png"
-              alt="Bharat Carbonates"
-              width={160}
-              height={40}
-              className="h-6 w-auto [filter:brightness(0)] sm:h-7"
-              priority
-            />
+            <span className="text-[13.5px] font-semibold uppercase tracking-[0.08em] text-white">
+              Parmeshwar Impex
+            </span>
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex">
@@ -57,7 +53,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-muted transition-colors hover:text-brand-charcoal"
+                className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/60 transition-colors hover:text-white"
               >
                 {link.label}
               </a>
@@ -67,16 +63,10 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-6 lg:flex">
           <a
-            href="tel:+919687634060"
-            className="text-[12px] font-medium text-brand-muted transition-colors hover:text-brand-charcoal"
-          >
-            +91 96876 34060
-          </a>
-          <a
             href="#contact"
-            className="rounded-xl bg-brand-orange px-5 py-2.5 text-[12px] font-semibold text-white transition-transform duration-200 hover:scale-105 hover:brightness-105"
+            className="bg-brand-orange px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-[#c79a4e]"
           >
-            Get a Quote
+            Get in Touch
           </a>
         </div>
 
@@ -91,17 +81,17 @@ export default function Navbar() {
           <motion.span
             animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
             transition={{ duration: 0.25 }}
-            className="h-[1.5px] w-5 bg-brand-charcoal"
+            className="h-[1.5px] w-5 bg-white"
           />
           <motion.span
             animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ duration: 0.2 }}
-            className="h-[1.5px] w-5 bg-brand-charcoal"
+            className="h-[1.5px] w-5 bg-white"
           />
           <motion.span
             animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
             transition={{ duration: 0.25 }}
-            className="h-[1.5px] w-5 bg-brand-charcoal"
+            className="h-[1.5px] w-5 bg-white"
           />
         </button>
       </div>
@@ -114,7 +104,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-brand-border bg-background lg:hidden"
+            className="overflow-hidden border-t border-white/10 lg:hidden"
           >
             <nav className="flex flex-col gap-1 px-6 py-4 sm:px-10">
               {links.map((link) => (
@@ -122,23 +112,17 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="border-b border-brand-border py-3.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-brand-charcoal last:border-none"
+                  className="border-b border-white/10 py-3.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-white last:border-none"
                 >
                   {link.label}
                 </a>
               ))}
               <a
-                href="tel:+919687634060"
-                className="mt-4 text-[13px] font-medium text-brand-muted"
-              >
-                +91 96876 34060
-              </a>
-              <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="mt-4 inline-flex items-center justify-center rounded-xl bg-brand-orange px-5 py-3 text-[13px] font-semibold text-white transition-transform duration-200 hover:scale-[1.02]"
+                className="mt-4 inline-flex items-center justify-center bg-brand-orange px-5 py-3 text-[12px] font-bold uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-[#c79a4e]"
               >
-                Get a Quote
+                Get in Touch
               </a>
             </nav>
           </motion.div>

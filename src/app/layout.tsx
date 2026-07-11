@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans, Fraunces, Archivo } from "next/font/google";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 const fraunces = Fraunces({
@@ -16,9 +22,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Bharat Carbonates Pvt. Ltd. | Calcium Carbonate & Talc Manufacturer",
+  title: "Parmeshwar Impex Pvt. Ltd. | Global Export & Import Trading",
   description:
-    "Premium calcium carbonate and talc solutions for modern manufacturing. Trusted by manufacturers across India since 1999. 150,000 MT annual capacity.",
+    "Surat-based export and import company trading ENA, empty glass bottles, aluminium ROPP caps, PET preform, and plastic caps across African markets since 2009.",
 };
 
 export default function RootLayout({
@@ -28,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakarta.variable} ${fraunces.variable} antialiased`}>
+      <body className={`${plusJakarta.variable} ${fraunces.variable} ${archivo.variable} antialiased`}>
         {children}
       </body>
     </html>
